@@ -1,9 +1,11 @@
 import weka.classifiers.functions.LinearRegression;
+import weka.classifiers.functions.Logistic;
 import weka.core.Attribute;
 import weka.core.FastVector;
 import weka.core.Instance;
 import weka.core.Instances;
 import weka.core.converters.ArffSaver;
+import weka.core.matrix.Matrix;
 
 import java.io.*;
 import java.util.ArrayList;
@@ -53,12 +55,11 @@ public class LinRegression {
         data.setClassIndex(data.numAttributes() - 1);
 
         LinearRegression regression = new LinearRegression();
+        regression.setDebug(true);
         //System.out.print(data.lastInstance().numAttributes());
 
         regression.buildClassifier(data);
         System.out.println(regression.toString());
-
-        ///regression.
 
         Instance myHouse = new Instance(3);
 
@@ -69,10 +70,5 @@ public class LinRegression {
         //Instance myHouse = data.lastInstance();
         double price = regression.classifyInstance(myHouse);
         System.out.println("My house ("+myHouse+"): "+price);
-
-        //Regression regression = new Regression()
-
-        //weka.estimators.NormalEstimator
-
     }
 }
